@@ -4,6 +4,7 @@ backend/.venv/
 *.py[cod]
 
 # Local configuration
+.envrc
 .env
 .env.*
 !.env.example

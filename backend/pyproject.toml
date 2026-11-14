@@ -5,5 +5,12 @@ description = "FastAPI backend for the NASA Space Apps Challenge 2026 project"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.162.7",
+    "numpy>=2.5.4",
+    "pandas>=3.1.1",
     "uvicorn>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "python-lsp-server[all]>=1.15.0",
 ]
