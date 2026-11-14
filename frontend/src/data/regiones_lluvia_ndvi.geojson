@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "name": "Regiones_lluvia_NDVI_2021_2025",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "Sahel, Niger", "climate": "Semiárido estacional", "role": "Región de prueba"},
+      "geometry": {"type": "Polygon", "coordinates": [[[4,12],[6,12],[6,14],[4,14],[4,12]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "Cerrado, Brasil", "climate": "Sabana tropical estacional", "role": "Región de prueba"},
+      "geometry": {"type": "Polygon", "coordinates": [[[-48,-15],[-46,-15],[-46,-13],[-48,-13],[-48,-15]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "Serengeti, Tanzania", "climate": "Sabana tropical estacional", "role": "Región de prueba"},
+      "geometry": {"type": "Polygon", "coordinates": [[[34.5,-3],[35.5,-3],[35.5,-2],[34.5,-2],[34.5,-3]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "Australia septentrional", "climate": "Sabana monzónica", "role": "Región de prueba"},
+      "geometry": {"type": "Polygon", "coordinates": [[[132,-17],[134,-17],[134,-15],[132,-15],[132,-17]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "Amazonía occidental, Perú", "climate": "Bosque tropical húmedo", "role": "Región de comparación"},
+      "geometry": {"type": "Polygon", "coordinates": [[[-72,-6],[-69,-6],[-69,-3],[-72,-3],[-72,-6]]]}
+    }
+  ]
+}
