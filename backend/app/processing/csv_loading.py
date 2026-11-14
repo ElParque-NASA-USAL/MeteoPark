@@ -6,7 +6,7 @@ from pathlib import Path
 # Load all csvs within that directory and
 # In my case: /mnt/c/Users/Angel/Documents/Proyectos/proyecto-nasa/backend/app
 CWD = Path.cwd()
-CSV_PATH = CWD.parent.parent / "data" / "giovani-data"
+CSV_PATH = CWD.parent.parent / "data"
 
 def read_giovanni_csv(path):
     with open(path, encoding="utf-8-sig") as f:
@@ -32,8 +32,8 @@ def fuse_csvs():
             if variable.name != "all_concat.csv"
         ]
 
-        final_df = pd.concat(country_variables, axis=1).reset_index()
-
+        final_df = pd.concat(country_variables, axis=1, sort=False).reset_index()
+        final_df = final_df.dropna()
         final_df.to_csv(country / "all_concat.csv", index=False)
 
 
