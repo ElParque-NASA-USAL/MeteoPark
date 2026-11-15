@@ -2,6 +2,15 @@
 
 MeteoPark is an Earth trend exploration project developed by El Parque for the NASA Space Apps Challenge 2026. The repository contains a FastAPI backend, a React + TypeScript frontend, and Earth science data and analysis code under development.
 
+## Project Structure
+
+The repository is organized into four main directories, separating the API, the user interface, the raw data, and the analytical documentation:
+
+- **`backend/`**: Contains the Python/FastAPI server. It handles the core logic, reads the environmental data, generates analytical visualizations (using Matplotlib), and serves several API endpoints (`/api/plot`, `/api/analysis`, etc.) to supply the frontend with clean data and generated plots.
+- **`frontend/`**: Contains the React + TypeScript user interface built with Vite. It features a responsive dashboard (`/explore`), a variable dictionary (`/wiki`), and detailed regional analysis views, incorporating interactive maps and NASA GIBS satellite imagery.
+- **`data/`**: The core dataset storage. It holds the pre-processed time series data for the five study regions (Australia, Brazil, Niger, Peru, Tanzania) in `.csv` format, including variables extracted from GLDAS and vegetation indices from MODIS.
+- **`docs/`**: Contains the scientific reporting and analysis scripts. It includes the exploratory correlation reports (`REGIONAL_STUDY.md`), Python scripts used to fetch satellite images (`fetch_satellite_images.py`), and machine-readable JSON/CSV files with the regional findings.
+
 ## Requirements
 
 - Python 3.12
@@ -77,7 +86,6 @@ Keep both servers running. Vite forwards `/api` requests to `http://127.0.0.1:80
 - `/explore`: the main workspace. Choose a region, read its study and findings, inspect dated satellite observations, or compare up to five variables with their definitions included on the page.
 - `/analysis?region=Niger`: a separate detailed view of the precipitation–vegetation analysis and numerical comparisons.
 
-
 ## Regional study and satellite observations
 
 Each region has findings drawn from all 307 monthly observations, including seasonal timing, raw and anomaly lag comparisons, EVI cross-checks, and a sensitivity check after removing a linear trend. The four-panel dashboard replaces the original scatter-only preview. Time-series plots retain source units and add a 12-month moving mean.
@@ -114,13 +122,20 @@ npm run lint
 
 ## Data
 
-The backend reads the supplied `data/<region>/all_concat.csv` files without changing the originals. All five regions contain 307 common monthly observations from February 2000 through August 2025. The separate vegetation files extend to September 2025; that final month is outside the common period and is not used here.
+The backend reads the supplied `data/<region>/all_concat.csv` files without changing the originals. All five regions contain 307 common monthly observations from February 2000 through August 2025. The separate vegetation files extend to September 2025; that final month is outside the common period and is therefore masked during analysis.
 
-NDVI and EVI come from MOD13A3 V061, precipitation from GPM IMERG Final V07, and the remaining variables from GLDAS Noah v2.1. The wiki retains the units used in the supplied processing code: precipitation is a mean rate in mm/h, specific humidity is in kg/kg, and potential evaporation is in W/m². The precipitation rate is not presented as a monthly rainfall total.
+NDVI and EVI are derived from MOD13A3 V061, precipitation from GPM IMERG Final V07, and the remaining variables from GLDAS Noah v2.1. The wiki retains the units used in the processing code: precipitation is a mean rate in mm/h (not presented as a monthly rainfall total), specific humidity is in kg/kg, and potential evaporation is in W/m². 
 
-The meteorological and land-surface series were extracted from [NASA Giovanni servers](https://giovanni.gsfc.nasa.gov/giovanni/) as regional monthly averages. The MODIS vegetation summaries were prepared with [NASA AppEEARS](https://appeears.earthdatacloud.nasa.gov/), as recorded in the supplied processing scripts.
-While the final consolidated CSVs omit pixel counts and quality flags for lightweight frontend performance, rigorous cloud masking and pixel reliability screening were performed during the initial AppEEARS extraction phase to guarantee the integrity of the regional averages.
+The meteorological and land-surface series were extracted from [NASA Giovanni servers](https://giovanni.gsfc.nasa.gov/giovanni/) as regional monthly averages. The MODIS vegetation summaries were processed using [NASA AppEEARS](https://appeears.earthdatacloud.nasa.gov/). While the final consolidated CSVs omit pixel counts and quality flags for lightweight frontend performance, rigorous cloud masking and pixel reliability screening were performed during the initial AppEEARS extraction phase to guarantee the integrity of the regional averages.
 
-The analysis aligns calendar months, masks missing/fill values, compares valid pairs and reports Pearson correlations both directly and after subtracting each variable's calendar-month mean over the common period. A positive lag means precipitation precedes vegetation. These are exploratory associations; they do not establish causality or statistical significance. The supplied vegetation summaries do not include pixel counts or quality flags, so cloud/quality screening cannot be verified from these files.
+The analysis pipeline aligns calendar months and masks missing/fill values. It then explores cause-and-effect relationships by calculating lagged Pearson correlations (both directly and using standardized climatological anomalies over the common period). A positive lag indicates that precipitation precedes vegetation changes. While these specific cross-correlations are exploratory associations and do not definitively establish causality, they provide valuable insights into the ecological response time of each region.
+
+### Advanced Statistical Roadmap
+While the current MVP utilizes Pearson correlation on climatological anomalies and Ordinary Least Squares (OLS) linear fits for trend sensitivity, environmental time series often violate the assumption of normality and are highly sensitive to outliers. 
+
+To transition from descriptive associations to robust statistical inference, our architecture is designed to integrate the following non-parametric pipeline:
+*   **Seasonal and Trend Decomposition using Loess (STL):** To formally isolate the underlying climate trend from seasonal cycles and irregular noise, replacing the current calendar-month mean subtraction.
+*   **Mann-Kendall Significance Test:** To rigorously evaluate the null hypothesis of no temporal trend without assuming a normal distribution of the data.
+*   **Theil-Sen Estimator:** To calculate a robust magnitude of change (slope) that is immune to extreme weather outliers, providing a highly reliable rate of environmental alteration per region.
 
 See the [regional study](docs/REGIONAL_STUDY.md), [original correlation report](docs/PRECIPITATION_VEGETATION_ANALYSIS.md), [original numerical results](docs/precipitation_vegetation_correlations.csv), and [change and startup guide](CHANGES.md).
