@@ -1,5 +1,7 @@
+import ArrowIcon from '../components/ArrowIcon'
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router'
+import SourceAttribution from '../components/SourceAttribution'
 import './HomePage.css'
 
 const researchTopics = [
@@ -7,19 +9,22 @@ const researchTopics = [
     number: '01',
     title: 'Data sources',
     description:
-      'The Earth science missions or models behind each dataset, along with their coverage and time period, will be documented here.',
+      'Read about GPM IMERG, GLDAS and MODIS, and how their regional monthly series are brought together.',
+    href: '/wiki#sources',
   },
   {
     number: '02',
     title: 'Methods',
     description:
-      'The team will explain how trend direction, magnitude, and significance were assessed.',
+      'Compare rainfall with NDVI and EVI, inspect seasonal anomalies, and explore responses up to three months later.',
+    href: '/analysis',
   },
   {
     number: '03',
     title: 'Variables',
     description:
-      'The selected variables, their units and time resolution, and why they matter will appear here after the analysis is complete.',
+      'Explore the twelve variables in our data: definitions, source units, time resolution and interpretation.',
+    href: '/wiki',
   },
 ]
 
@@ -65,6 +70,10 @@ function HomePage() {
             <span className="home-wordmark">MeteoPark</span>
             <span className="home-topline-note">NASA Space Apps Challenge 2026</span>
           </div>
+          <nav className="home-documentation-nav" aria-label="Research navigation">
+            <Link to="/wiki">Variable wiki</Link>
+            <Link to="/analysis">Rainfall & vegetation <ArrowIcon /></Link>
+          </nav>
 
           <div className="home-hero-grid">
             <div className="home-hero-copy">
@@ -74,29 +83,29 @@ function HomePage() {
                 <span>See the evidence.</span>
               </h1>
               <p className="home-hero-description">
-                We are building a tool to explore Earth science variables across
-                selected regions. Our goal is to show what changes over time,
-                where it changes, by how much, and whether the trend is significant.
+                Explore monthly Earth science data across five selected regions.
+                Follow up to five variables at once, then compare rainfall with
+                vegetation greenness through NDVI and EVI.
               </p>
               <Link className="home-cta" to="/explore">
-                Explore regions <span aria-hidden="true">↗</span>
+                Explore regions <span aria-hidden="true"><ArrowIcon /></span>
               </Link>
             </div>
 
-            <div className="home-hero-art" aria-label="Illustrative preview of the results">
+            <div className="home-hero-art" aria-label="NASA satellite view of the Sahel study area">
               <div className="home-orbit home-orbit-one" aria-hidden="true" />
               <div className="home-orbit home-orbit-two" aria-hidden="true" />
               <div className="home-hero-preview">
                 <img
-                  src="/test-results/before.png"
-                  alt="Illustrative forest image used in the demo"
+                  src="/satellite/Niger/2015-08-truecolor.png"
+                  alt="NASA MODIS true-color view of the Sahel study area in Niger on 20 August 2015"
                 />
                 <div className="home-preview-caption">
-                  <span>Selected region</span>
-                  <strong>From place to perspective</strong>
+                  <span>Sahel, Niger · Terra / MODIS</span>
+                  <strong>A closer look at the rainy season</strong>
                 </div>
               </div>
-              <div className="home-preview-badge">Demo preview / not scientific results</div>
+              <div className="home-preview-badge">NASA satellite image / 20 Aug 2015</div>
             </div>
           </div>
 
@@ -113,9 +122,9 @@ function HomePage() {
             <h2 id="overview-title">From observations<br />to trends.</h2>
             <p>
               The globe is the starting point. Choose a region, then examine
-              time series and supporting imagery. The final analysis will show
-              the selected variables, the size and direction of their trends,
-              and whether those trends are significant.
+              time series and the rainfall–vegetation analysis. Compare the
+              monthly observations and seasonal anomalies to understand how
+              their relationships vary across different climates.
             </p>
           </div>
           <ol className="home-steps">
@@ -127,12 +136,12 @@ function HomePage() {
             <li>
               <span className="home-step-number">02</span>
               <h3>Follow the variable</h3>
-              <p>The finished explorer will pair its time series with contextual imagery.</p>
+              <p>Choose up to five variables and compare their monthly series in their original units.</p>
             </li>
             <li>
               <span className="home-step-number">03</span>
-              <h3>Assess the trend</h3>
-              <p>The completed analysis will explain its direction, magnitude, and significance.</p>
+              <h3>Explore the relationship</h3>
+              <p>Compare rainfall and vegetation in the same month and at delays of one to three months.</p>
             </li>
           </ol>
         </div>
@@ -144,31 +153,31 @@ function HomePage() {
           <div className="home-section-heading">
             <h2 id="results-title">See the evidence<br />from more than one angle.</h2>
             <p>
-              Graphs and time series will carry the trend analysis. Images and
-              animation add visual context. These previews use illustrative
-              content while the final data is being prepared.
+              Explore findings, variable definitions and dated satellite views
+              together. These NASA observations show the same Sahel study area
+              in consecutive months; the full regional study puts the example in context.
             </p>
           </div>
 
           <div className="home-showcase">
             <div className="home-showcase-topline">
               <span>Inside the explorer</span>
-              <span>Illustrative content · Not scientific results</span>
+              <span>NASA MODIS · Sahel, Niger · 2015</span>
             </div>
             <div className="home-showcase-grid">
               <div className="home-showcase-comparison">
                 <div className="home-showcase-caption">
                   <span>01 / Compare</span>
-                  <h3>Before & after</h3>
+                  <h3>Vegetation, one month apart</h3>
                 </div>
                 <div className="home-image-pair">
                   <figure>
-                    <img src="/test-results/before.png" alt="Illustrative before image" loading="lazy" />
-                    <figcaption>Before</figcaption>
+                    <img src="/satellite/Niger/2015-07-ndvi.png" alt="NASA monthly NDVI map of the Niger study area in July 2015" loading="lazy" />
+                    <figcaption>July 2015 · Monthly NDVI</figcaption>
                   </figure>
                   <figure>
-                    <img src="/test-results/after.png" alt="Illustrative after image" loading="lazy" />
-                    <figcaption>After</figcaption>
+                    <img src="/satellite/Niger/2015-08-ndvi.png" alt="NASA monthly NDVI map of the same Niger study area in August 2015" loading="lazy" />
+                    <figcaption>August 2015 · Same NDVI scale</figcaption>
                   </figure>
                 </div>
               </div>
@@ -178,14 +187,15 @@ function HomePage() {
                     <span>02 / Understand</span>
                     <h3>Graphs</h3>
                   </div>
-                  <img src="/test-results/graph1.webp" alt="Illustrative graph with simulated data" loading="lazy" />
+                  <img src="/images/niger-study.png" alt="Four-panel regional study of Niger: seasonal cycle, lag correlations, anomalies and the 2015 example" loading="lazy" />
+                  <Link className="home-result-link" to="/explore?region=Niger">Read the regional study <ArrowIcon /></Link>
                 </figure>
                 <figure className="home-showcase-tile">
                   <div className="home-showcase-caption">
                     <span>03 / Follow</span>
-                    <h3>Animation</h3>
+                    <h3>Satellite observations</h3>
                   </div>
-                  <img src="/test-results/animation.gif" alt="Illustrative forest animation" loading="lazy" />
+                  <img src="/satellite/Niger/2015-08-truecolor.png" alt="NASA Terra MODIS satellite photo of the Niger study area on 20 August 2015" loading="lazy" />
                 </figure>
               </div>
             </div>
@@ -199,10 +209,12 @@ function HomePage() {
           <div className="home-section-heading">
             <h2 id="research-title">The methods<br />behind every trend.</h2>
             <p>
-              The analysis team will document the data sources, selected
-              variables, and methods used to estimate and assess each trend.
+              Read the variable wiki and data sources, then inspect how the
+              rainfall–vegetation relationships were calculated and how to
+              interpret their limits.
             </p>
           </div>
+          <SourceAttribution />
           <div className="home-research-grid">
             {researchTopics.map((topic) => (
               <article className="home-research-card" key={topic.number}>
@@ -211,7 +223,9 @@ function HomePage() {
                   <h3>{topic.title}</h3>
                   <p>{topic.description}</p>
                 </div>
-                <span className="home-placeholder-tag">Content pending</span>
+                <Link className="home-placeholder-tag home-research-link" to={topic.href}>
+                  Read {topic.title.toLowerCase()} <ArrowIcon />
+                </Link>
               </article>
             ))}
           </div>
@@ -242,7 +256,7 @@ function HomePage() {
           <p className="home-section-label">05 / Your turn</p>
           <h2 id="final-title">Pick a place.<br /><span>Start exploring.</span></h2>
           <Link className="home-cta" to="/explore">
-            Explore regions <span aria-hidden="true">↗</span>
+            Explore regions <span aria-hidden="true"><ArrowIcon /></span>
           </Link>
         </div>
       </section>

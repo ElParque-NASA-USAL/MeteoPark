@@ -15,3 +15,6 @@ dependencies = [
 dev = [
     "python-lsp-server[all]>=1.15.0",
 ]
+test = [
+    "httpx>=0.28.1",
+]

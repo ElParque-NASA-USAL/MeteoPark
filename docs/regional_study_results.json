@@ -1,0 +1,1092 @@
+[
+  {
+    "region": "Niger",
+    "label": "Sahel, Niger",
+    "start": "2000-02-01",
+    "end": "2025-08-01",
+    "observations": 307,
+    "results": [
+      {
+        "variable": "ndvi",
+        "label": "NDVI",
+        "pearson_r": 0.6743339077610232,
+        "anomaly_r": 0.31502744232629415,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.6743339077610232,
+            "anomaly_r": 0.31502744232629415,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.9244040661374056,
+            "anomaly_r": 0.4180614033256684,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.8019239588684427,
+            "anomaly_r": 0.2866575621157556,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.4467180504151867,
+            "anomaly_r": 0.21636800524725705,
+            "observations": 304
+          }
+        ]
+      },
+      {
+        "variable": "evi",
+        "label": "EVI",
+        "pearson_r": 0.7138953553950841,
+        "anomaly_r": 0.29472175849769383,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.7138953553950841,
+            "anomaly_r": 0.29472175849769383,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.937408408205294,
+            "anomaly_r": 0.42615930235031313,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.7767671920009551,
+            "anomaly_r": 0.28947575537729675,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.39236076091159927,
+            "anomaly_r": 0.20311897794264608,
+            "observations": 304
+          }
+        ]
+      }
+    ],
+    "methodology": [
+      "Use the supplied all_concat.csv regional monthly averages over the common period, February 2000 to August 2025; the extra vegetation-only month is excluded.",
+      "Precipitation is the supplied monthly mean rate in mm/h. NDVI and EVI are dimensionless regional means. No values are rescaled or interpolated.",
+      "Calculate Pearson r on finite paired observations. Missing/fill values are excluded per pair; fewer than three pairs or a constant series gives an undefined correlation (null).",
+      "Also remove each variable's calendar-month mean over the common period to calculate seasonal anomalies, then correlate these anomalies.",
+      "For lag L = 0, 1, 2 or 3 calendar months, compare rainfall at month t\u2212L with vegetation at month t. Explicit missing calendar months are retained before shifting.",
+      "Estimate each month's rainfall depth in mm as the supplied monthly mean rate in mm/h multiplied by 24 and the actual number of days in that month, including leap years. Seasonal plots average these monthly amounts by calendar month; correlation calculations continue to use the original rate.",
+      "Use a fixed one-month rain lead as a common cross-region comparison, while displaying all leads from zero to three months; do not select the largest correlation as a confirmed response time.",
+      "For a trend-sensitivity check, fit and remove a linear time trend separately from the finite paired rainfall and vegetation seasonal anomalies, then correlate their residuals."
+    ],
+    "limitations": [
+      "Correlation describes association and does not establish that rain caused vegetation changes. Radiation, temperature, soils and land use can also contribute.",
+      "Raw correlations can largely reflect the shared annual cycle. Anomaly correlations reduce this effect but do not remove trends or temporal autocorrelation.",
+      "This is an exploratory analysis: no significance tests or causal model are fitted. Comparing several lags must not be interpreted as a validated response time.",
+      "The supplied vegetation means do not include per-pixel quality flags or valid-pixel counts, so cloud and retrieval quality effects cannot be assessed here. NDVI can saturate over dense forest.",
+      "Regional averages combine satellite products and a land model with different grid resolutions. They do not represent individual pixels or prove local changes throughout a region.",
+      "No uncertainty interval or statistical significance claim is reported: temporal autocorrelation, several lag comparisons and data quality need explicit treatment before confirmatory inference.",
+      "Satellite photographs provide dated visual context. Cloud cover, atmospheric conditions, viewing geometry and image rendering can change apparent greenness; a selected before/after image pair cannot prove a rainfall effect."
+    ],
+    "findings": [
+      {
+        "title": "A delayed greening signal in the Sahel",
+        "text": "The regional monthly averages show a pronounced wet-season greening cycle. Rainfall peaks in August and average NDVI peaks in September. This seasonal timing is consistent with vegetation greening after the rains, but it is not a causal estimate."
+      },
+      {
+        "title": "What remains after removing the seasons?",
+        "text": "NDVI's same-month Pearson r is 0.674; comparing rainfall with NDVI one month later gives 0.924. After subtracting each calendar month's usual values, the one-month correlation is 0.418 over 306 paired months. The smaller anomaly correlation shows that the seasonal cycle explains part, but not all, of the raw association."
+      },
+      {
+        "title": "Cross-check with a second vegetation index",
+        "text": "EVI's one-month anomaly correlation is 0.426. NDVI and EVI provide complementary greenness measures from the same MODIS product; agreement is useful, but it is not an independent satellite experiment or a measurement of vegetation area."
+      },
+      {
+        "title": "Sensitivity to long-term trends",
+        "text": "Removing a fitted linear trend from the paired seasonal anomalies gives one-month correlations of 0.410 for NDVI and 0.418 for EVI. This descriptive sensitivity check does not remove all temporal dependence or control for other environmental drivers."
+      }
+    ],
+    "seasonal": {
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "precipitation_mm": [
+        0.1296404788750368,
+        0.20342100629114768,
+        1.360912426020923,
+        9.714414167169231,
+        44.186021558769234,
+        89.91272363538461,
+        169.35639421384616,
+        212.18174026984616,
+        124.53045353856,
+        28.2300074903712,
+        0.48903033741696,
+        0.12722347887174718
+      ],
+      "ndvi": [
+        0.216533316,
+        0.20011376923076923,
+        0.18634977307692308,
+        0.18222178076923076,
+        0.18382366153846152,
+        0.21308928846153846,
+        0.3292124961538461,
+        0.43351069230769235,
+        0.44636094,
+        0.38177173600000003,
+        0.28602184399999997,
+        0.24263660399999998
+      ],
+      "evi": [
+        0.148125772,
+        0.1392490576923077,
+        0.13250254615384616,
+        0.13039381923076923,
+        0.13198435,
+        0.15399811923076923,
+        0.24030810384615384,
+        0.31283868076923077,
+        0.320222708,
+        0.265373376,
+        0.194109752,
+        0.16454827600000002
+      ],
+      "counts": [
+        25,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    "metrics": {
+      "ndvi_same_month_r": 0.6743339077610232,
+      "ndvi_lag1_r": 0.9244040661374056,
+      "ndvi_lag1_anomaly_r": 0.4180614033256684,
+      "evi_lag1_anomaly_r": 0.42615930235031313,
+      "ndvi_lag1_detrended_anomaly_r": 0.4099215598908592,
+      "evi_lag1_detrended_anomaly_r": 0.41841656155860346,
+      "rain_peak_month": 8,
+      "ndvi_peak_month": 9
+    },
+    "example": {
+      "before": "2015-07-01",
+      "after": "2015-08-01",
+      "rain_mm": 169.066412688,
+      "rain_after_mm": 221.532161064,
+      "ndvi_before": 0.299626,
+      "ndvi_after": 0.4390679,
+      "evi_before": 0.2219388,
+      "evi_after": 0.3146295,
+      "onset_calendar_month": 7,
+      "selection_note": "Identify the calendar month with the largest climatological increase in monthly rainfall from the preceding month (including December to January). For that month, select the 2015\u20132024 year whose rainfall is closest to its median; ties within 1e-9 mm select the earlier year. Compare that rainfall-onset month with the following month. Selection uses rainfall, not the vegetation response. Rain can also fall during the following month; the observed greenness change cannot be attributed solely to the onset-month rainfall."
+    },
+    "sources": [
+      {
+        "label": "NASA Giovanni \u00b7 regional meteorological series",
+        "url": "https://giovanni.gsfc.nasa.gov/giovanni/"
+      },
+      {
+        "label": "GPM IMERG precipitation",
+        "url": "https://gpm.nasa.gov/data/imerg"
+      },
+      {
+        "label": "MODIS MOD13A3 Collection 6.1 \u00b7 NDVI and EVI",
+        "url": "https://lpdaac.usgs.gov/products/mod13a3v061/"
+      }
+    ]
+  },
+  {
+    "region": "Brazil",
+    "label": "Cerrado, Brazil",
+    "start": "2000-02-01",
+    "end": "2025-08-01",
+    "observations": 307,
+    "results": [
+      {
+        "variable": "ndvi",
+        "label": "NDVI",
+        "pearson_r": 0.5496636626051261,
+        "anomaly_r": 0.21952471001656323,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.5496636626051261,
+            "anomaly_r": 0.21952471001656323,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.7976962689650894,
+            "anomaly_r": 0.3600101688272548,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.7745995363868283,
+            "anomaly_r": 0.15329354029857653,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.5915550658651115,
+            "anomaly_r": 0.09893012693339968,
+            "observations": 304
+          }
+        ]
+      },
+      {
+        "variable": "evi",
+        "label": "EVI",
+        "pearson_r": 0.6822931577944465,
+        "anomaly_r": 0.2290359777774153,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.6822931577944465,
+            "anomaly_r": 0.2290359777774153,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.845552951462183,
+            "anomaly_r": 0.37666008394451317,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.7201113838697693,
+            "anomaly_r": 0.05896053044556403,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.4594475835273049,
+            "anomaly_r": 0.028850747966385915,
+            "observations": 304
+          }
+        ]
+      }
+    ],
+    "methodology": [
+      "Use the supplied all_concat.csv regional monthly averages over the common period, February 2000 to August 2025; the extra vegetation-only month is excluded.",
+      "Precipitation is the supplied monthly mean rate in mm/h. NDVI and EVI are dimensionless regional means. No values are rescaled or interpolated.",
+      "Calculate Pearson r on finite paired observations. Missing/fill values are excluded per pair; fewer than three pairs or a constant series gives an undefined correlation (null).",
+      "Also remove each variable's calendar-month mean over the common period to calculate seasonal anomalies, then correlate these anomalies.",
+      "For lag L = 0, 1, 2 or 3 calendar months, compare rainfall at month t\u2212L with vegetation at month t. Explicit missing calendar months are retained before shifting.",
+      "Estimate each month's rainfall depth in mm as the supplied monthly mean rate in mm/h multiplied by 24 and the actual number of days in that month, including leap years. Seasonal plots average these monthly amounts by calendar month; correlation calculations continue to use the original rate.",
+      "Use a fixed one-month rain lead as a common cross-region comparison, while displaying all leads from zero to three months; do not select the largest correlation as a confirmed response time.",
+      "For a trend-sensitivity check, fit and remove a linear time trend separately from the finite paired rainfall and vegetation seasonal anomalies, then correlate their residuals."
+    ],
+    "limitations": [
+      "Correlation describes association and does not establish that rain caused vegetation changes. Radiation, temperature, soils and land use can also contribute.",
+      "Raw correlations can largely reflect the shared annual cycle. Anomaly correlations reduce this effect but do not remove trends or temporal autocorrelation.",
+      "This is an exploratory analysis: no significance tests or causal model are fitted. Comparing several lags must not be interpreted as a validated response time.",
+      "The supplied vegetation means do not include per-pixel quality flags or valid-pixel counts, so cloud and retrieval quality effects cannot be assessed here. NDVI can saturate over dense forest.",
+      "Regional averages combine satellite products and a land model with different grid resolutions. They do not represent individual pixels or prove local changes throughout a region.",
+      "No uncertainty interval or statistical significance claim is reported: temporal autocorrelation, several lag comparisons and data quality need explicit treatment before confirmatory inference.",
+      "Satellite photographs provide dated visual context. Cloud cover, atmospheric conditions, viewing geometry and image rendering can change apparent greenness; a selected before/after image pair cannot prove a rainfall effect."
+    ],
+    "findings": [
+      {
+        "title": "A wet-season recovery in the Cerrado",
+        "text": "The Cerrado study area has a strong dry-to-wet seasonal transition. Rainfall is concentrated in the austral wet season, while average NDVI is highest in March. Vegetation remains green after the rainfall maximum, so the two seasonal peaks should not be treated as a single fixed response time."
+      },
+      {
+        "title": "What remains after removing the seasons?",
+        "text": "NDVI's same-month Pearson r is 0.550; comparing rainfall with NDVI one month later gives 0.798. After subtracting each calendar month's usual values, the one-month correlation is 0.360 over 306 paired months. The smaller anomaly correlation shows that the seasonal cycle explains part, but not all, of the raw association."
+      },
+      {
+        "title": "Cross-check with a second vegetation index",
+        "text": "EVI's one-month anomaly correlation is 0.377. NDVI and EVI provide complementary greenness measures from the same MODIS product; agreement is useful, but it is not an independent satellite experiment or a measurement of vegetation area."
+      },
+      {
+        "title": "Sensitivity to long-term trends",
+        "text": "Removing a fitted linear trend from the paired seasonal anomalies gives one-month correlations of 0.393 for NDVI and 0.434 for EVI. This descriptive sensitivity check does not remove all temporal dependence or control for other environmental drivers."
+      }
+    ],
+    "seasonal": {
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "precipitation_mm": [
+        211.309191593184,
+        172.89547567347694,
+        192.41794226455386,
+        99.30491997535385,
+        17.415088984276615,
+        1.538436390091754,
+        0.2829939852977815,
+        4.2695693549804306,
+        21.739542876,
+        102.843313502496,
+        220.7582207712,
+        224.42309237184
+      ],
+      "ndvi": [
+        0.67930092,
+        0.6965970153846153,
+        0.6987031,
+        0.6796753269230769,
+        0.6266250346153845,
+        0.5579559461538461,
+        0.4795818423076923,
+        0.4148426076923077,
+        0.385371096,
+        0.438121336,
+        0.5585977679999999,
+        0.64976522
+      ],
+      "evi": [
+        0.451938856,
+        0.4662418346153846,
+        0.45026955,
+        0.4018872,
+        0.3498790192307692,
+        0.2942143269230769,
+        0.2532551653846154,
+        0.22790201923076925,
+        0.220807528,
+        0.259727688,
+        0.353875696,
+        0.42009906
+      ],
+      "counts": [
+        25,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    "metrics": {
+      "ndvi_same_month_r": 0.5496636626051261,
+      "ndvi_lag1_r": 0.7976962689650894,
+      "ndvi_lag1_anomaly_r": 0.3600101688272548,
+      "evi_lag1_anomaly_r": 0.37666008394451317,
+      "ndvi_lag1_detrended_anomaly_r": 0.39326478204111903,
+      "evi_lag1_detrended_anomaly_r": 0.43406639493183263,
+      "rain_peak_month": 12,
+      "ndvi_peak_month": 3
+    },
+    "example": {
+      "before": "2015-11-01",
+      "after": "2015-12-01",
+      "rain_mm": 204.00225192,
+      "rain_after_mm": 80.72623646400001,
+      "ndvi_before": 0.5160334,
+      "ndvi_after": 0.5810691,
+      "evi_before": 0.3104836,
+      "evi_after": 0.3732136,
+      "onset_calendar_month": 11,
+      "selection_note": "Identify the calendar month with the largest climatological increase in monthly rainfall from the preceding month (including December to January). For that month, select the 2015\u20132024 year whose rainfall is closest to its median; ties within 1e-9 mm select the earlier year. Compare that rainfall-onset month with the following month. Selection uses rainfall, not the vegetation response. Rain can also fall during the following month; the observed greenness change cannot be attributed solely to the onset-month rainfall."
+    },
+    "sources": [
+      {
+        "label": "NASA Giovanni \u00b7 regional meteorological series",
+        "url": "https://giovanni.gsfc.nasa.gov/giovanni/"
+      },
+      {
+        "label": "GPM IMERG precipitation",
+        "url": "https://gpm.nasa.gov/data/imerg"
+      },
+      {
+        "label": "MODIS MOD13A3 Collection 6.1 \u00b7 NDVI and EVI",
+        "url": "https://lpdaac.usgs.gov/products/mod13a3v061/"
+      }
+    ]
+  },
+  {
+    "region": "Tanzania",
+    "label": "Serengeti, Tanzania",
+    "start": "2000-02-01",
+    "end": "2025-08-01",
+    "observations": 307,
+    "results": [
+      {
+        "variable": "ndvi",
+        "label": "NDVI",
+        "pearson_r": 0.5724300977543144,
+        "anomaly_r": 0.4425148212007011,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.5724300977543144,
+            "anomaly_r": 0.4425148212007011,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.8252600847380362,
+            "anomaly_r": 0.6664628745565453,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.6248802754819807,
+            "anomaly_r": 0.3796093530227207,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.28920067668285615,
+            "anomaly_r": 0.15588411264090812,
+            "observations": 304
+          }
+        ]
+      },
+      {
+        "variable": "evi",
+        "label": "EVI",
+        "pearson_r": 0.5574281975934595,
+        "anomaly_r": 0.4106736949993281,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.5574281975934595,
+            "anomaly_r": 0.4106736949993281,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.8309000916927712,
+            "anomaly_r": 0.698430044097218,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.6495578440072823,
+            "anomaly_r": 0.45055303561269516,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.31903992544605436,
+            "anomaly_r": 0.2063515714381663,
+            "observations": 304
+          }
+        ]
+      }
+    ],
+    "methodology": [
+      "Use the supplied all_concat.csv regional monthly averages over the common period, February 2000 to August 2025; the extra vegetation-only month is excluded.",
+      "Precipitation is the supplied monthly mean rate in mm/h. NDVI and EVI are dimensionless regional means. No values are rescaled or interpolated.",
+      "Calculate Pearson r on finite paired observations. Missing/fill values are excluded per pair; fewer than three pairs or a constant series gives an undefined correlation (null).",
+      "Also remove each variable's calendar-month mean over the common period to calculate seasonal anomalies, then correlate these anomalies.",
+      "For lag L = 0, 1, 2 or 3 calendar months, compare rainfall at month t\u2212L with vegetation at month t. Explicit missing calendar months are retained before shifting.",
+      "Estimate each month's rainfall depth in mm as the supplied monthly mean rate in mm/h multiplied by 24 and the actual number of days in that month, including leap years. Seasonal plots average these monthly amounts by calendar month; correlation calculations continue to use the original rate.",
+      "Use a fixed one-month rain lead as a common cross-region comparison, while displaying all leads from zero to three months; do not select the largest correlation as a confirmed response time.",
+      "For a trend-sensitivity check, fit and remove a linear time trend separately from the finite paired rainfall and vegetation seasonal anomalies, then correlate their residuals."
+    ],
+    "limitations": [
+      "Correlation describes association and does not establish that rain caused vegetation changes. Radiation, temperature, soils and land use can also contribute.",
+      "Raw correlations can largely reflect the shared annual cycle. Anomaly correlations reduce this effect but do not remove trends or temporal autocorrelation.",
+      "This is an exploratory analysis: no significance tests or causal model are fitted. Comparing several lags must not be interpreted as a validated response time.",
+      "The supplied vegetation means do not include per-pixel quality flags or valid-pixel counts, so cloud and retrieval quality effects cannot be assessed here. NDVI can saturate over dense forest.",
+      "Regional averages combine satellite products and a land model with different grid resolutions. They do not represent individual pixels or prove local changes throughout a region.",
+      "No uncertainty interval or statistical significance claim is reported: temporal autocorrelation, several lag comparisons and data quality need explicit treatment before confirmatory inference.",
+      "Satellite photographs provide dated visual context. Cloud cover, atmospheric conditions, viewing geometry and image rendering can change apparent greenness; a selected before/after image pair cannot prove a rainfall effect."
+    ],
+    "findings": [
+      {
+        "title": "Two rain-season pulses in the Serengeti",
+        "text": "The monthly climatology has rainfall pulses in March\u2013April and November\u2013December, rather than one simple annual maximum. Greenness rises around both wet seasons. A one-month comparison captures an association across the full record, without implying that every rain event produces the same delay."
+      },
+      {
+        "title": "What remains after removing the seasons?",
+        "text": "NDVI's same-month Pearson r is 0.572; comparing rainfall with NDVI one month later gives 0.825. After subtracting each calendar month's usual values, the one-month correlation is 0.666 over 306 paired months. The smaller anomaly correlation shows that the seasonal cycle explains part, but not all, of the raw association."
+      },
+      {
+        "title": "Cross-check with a second vegetation index",
+        "text": "EVI's one-month anomaly correlation is 0.698. NDVI and EVI provide complementary greenness measures from the same MODIS product; agreement is useful, but it is not an independent satellite experiment or a measurement of vegetation area."
+      },
+      {
+        "title": "Sensitivity to long-term trends",
+        "text": "Removing a fitted linear trend from the paired seasonal anomalies gives one-month correlations of 0.667 for NDVI and 0.703 for EVI. This descriptive sensitivity check does not remove all temporal dependence or control for other environmental drivers."
+      }
+    ],
+    "seasonal": {
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "precipitation_mm": [
+        91.680395721984,
+        79.72309150532308,
+        126.91102167738462,
+        131.5209940476923,
+        65.35919052784615,
+        24.136224495784614,
+        15.176352673412309,
+        27.121444207476923,
+        40.42457904672,
+        57.381816150144,
+        108.31743133632,
+        122.530720118304
+      ],
+      "ndvi": [
+        0.560795484,
+        0.5279159730769231,
+        0.5271704230769231,
+        0.5559624538461538,
+        0.5354575038461539,
+        0.44225755384615384,
+        0.3241513038461538,
+        0.2780896692307692,
+        0.28580014,
+        0.292380268,
+        0.36215117999999996,
+        0.507301984
+      ],
+      "evi": [
+        0.34869872399999996,
+        0.33145950384615386,
+        0.3346856384615385,
+        0.35011348846153845,
+        0.3297924576923077,
+        0.2636729230769231,
+        0.18438293846153847,
+        0.15217009230769232,
+        0.15718068000000002,
+        0.16545556,
+        0.20491546400000002,
+        0.30339012400000004
+      ],
+      "counts": [
+        25,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    "metrics": {
+      "ndvi_same_month_r": 0.5724300977543144,
+      "ndvi_lag1_r": 0.8252600847380362,
+      "ndvi_lag1_anomaly_r": 0.6664628745565453,
+      "evi_lag1_anomaly_r": 0.698430044097218,
+      "ndvi_lag1_detrended_anomaly_r": 0.6673286583703113,
+      "evi_lag1_detrended_anomaly_r": 0.7028242647449481,
+      "rain_peak_month": 4,
+      "ndvi_peak_month": 1
+    },
+    "example": {
+      "before": "2017-11-01",
+      "after": "2017-12-01",
+      "rain_mm": 115.96221720000001,
+      "rain_after_mm": 80.359263672,
+      "ndvi_before": 0.3300818,
+      "ndvi_after": 0.4062082,
+      "evi_before": 0.2012606,
+      "evi_after": 0.248997,
+      "onset_calendar_month": 11,
+      "selection_note": "Identify the calendar month with the largest climatological increase in monthly rainfall from the preceding month (including December to January). For that month, select the 2015\u20132024 year whose rainfall is closest to its median; ties within 1e-9 mm select the earlier year. Compare that rainfall-onset month with the following month. Selection uses rainfall, not the vegetation response. Rain can also fall during the following month; the observed greenness change cannot be attributed solely to the onset-month rainfall."
+    },
+    "sources": [
+      {
+        "label": "NASA Giovanni \u00b7 regional meteorological series",
+        "url": "https://giovanni.gsfc.nasa.gov/giovanni/"
+      },
+      {
+        "label": "GPM IMERG precipitation",
+        "url": "https://gpm.nasa.gov/data/imerg"
+      },
+      {
+        "label": "MODIS MOD13A3 Collection 6.1 \u00b7 NDVI and EVI",
+        "url": "https://lpdaac.usgs.gov/products/mod13a3v061/"
+      }
+    ]
+  },
+  {
+    "region": "Australia",
+    "label": "Northern Australia",
+    "start": "2000-02-01",
+    "end": "2025-08-01",
+    "observations": 307,
+    "results": [
+      {
+        "variable": "ndvi",
+        "label": "NDVI",
+        "pearson_r": 0.41481201733477935,
+        "anomaly_r": 0.1723975507912867,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.41481201733477935,
+            "anomaly_r": 0.1723975507912867,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.7262107341481173,
+            "anomaly_r": 0.39953229903430065,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.7216384693856137,
+            "anomaly_r": 0.31961873745729313,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.5371597574432959,
+            "anomaly_r": 0.22068125739457267,
+            "observations": 304
+          }
+        ]
+      },
+      {
+        "variable": "evi",
+        "label": "EVI",
+        "pearson_r": 0.45978216150619367,
+        "anomaly_r": 0.15333897200779475,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": 0.45978216150619367,
+            "anomaly_r": 0.15333897200779475,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": 0.7525288289321873,
+            "anomaly_r": 0.37758991404255876,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": 0.7053066839707504,
+            "anomaly_r": 0.2901300142901223,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.4749905543186324,
+            "anomaly_r": 0.19785909111929856,
+            "observations": 304
+          }
+        ]
+      }
+    ],
+    "methodology": [
+      "Use the supplied all_concat.csv regional monthly averages over the common period, February 2000 to August 2025; the extra vegetation-only month is excluded.",
+      "Precipitation is the supplied monthly mean rate in mm/h. NDVI and EVI are dimensionless regional means. No values are rescaled or interpolated.",
+      "Calculate Pearson r on finite paired observations. Missing/fill values are excluded per pair; fewer than three pairs or a constant series gives an undefined correlation (null).",
+      "Also remove each variable's calendar-month mean over the common period to calculate seasonal anomalies, then correlate these anomalies.",
+      "For lag L = 0, 1, 2 or 3 calendar months, compare rainfall at month t\u2212L with vegetation at month t. Explicit missing calendar months are retained before shifting.",
+      "Estimate each month's rainfall depth in mm as the supplied monthly mean rate in mm/h multiplied by 24 and the actual number of days in that month, including leap years. Seasonal plots average these monthly amounts by calendar month; correlation calculations continue to use the original rate.",
+      "Use a fixed one-month rain lead as a common cross-region comparison, while displaying all leads from zero to three months; do not select the largest correlation as a confirmed response time.",
+      "For a trend-sensitivity check, fit and remove a linear time trend separately from the finite paired rainfall and vegetation seasonal anomalies, then correlate their residuals."
+    ],
+    "limitations": [
+      "Correlation describes association and does not establish that rain caused vegetation changes. Radiation, temperature, soils and land use can also contribute.",
+      "Raw correlations can largely reflect the shared annual cycle. Anomaly correlations reduce this effect but do not remove trends or temporal autocorrelation.",
+      "This is an exploratory analysis: no significance tests or causal model are fitted. Comparing several lags must not be interpreted as a validated response time.",
+      "The supplied vegetation means do not include per-pixel quality flags or valid-pixel counts, so cloud and retrieval quality effects cannot be assessed here. NDVI can saturate over dense forest.",
+      "Regional averages combine satellite products and a land model with different grid resolutions. They do not represent individual pixels or prove local changes throughout a region.",
+      "No uncertainty interval or statistical significance claim is reported: temporal autocorrelation, several lag comparisons and data quality need explicit treatment before confirmatory inference.",
+      "Satellite photographs provide dated visual context. Cloud cover, atmospheric conditions, viewing geometry and image rendering can change apparent greenness; a selected before/after image pair cannot prove a rainfall effect."
+    ],
+    "findings": [
+      {
+        "title": "Monsoon rain followed by higher greenness",
+        "text": "In northern Australia, average rainfall peaks in February and average NDVI peaks in March. This regional monsoon-season sequence is consistent with delayed greening and is supported by the full-record lag comparison, not by a single photograph."
+      },
+      {
+        "title": "What remains after removing the seasons?",
+        "text": "NDVI's same-month Pearson r is 0.415; comparing rainfall with NDVI one month later gives 0.726. After subtracting each calendar month's usual values, the one-month correlation is 0.400 over 306 paired months. The smaller anomaly correlation shows that the seasonal cycle explains part, but not all, of the raw association."
+      },
+      {
+        "title": "Cross-check with a second vegetation index",
+        "text": "EVI's one-month anomaly correlation is 0.378. NDVI and EVI provide complementary greenness measures from the same MODIS product; agreement is useful, but it is not an independent satellite experiment or a measurement of vegetation area."
+      },
+      {
+        "title": "Sensitivity to long-term trends",
+        "text": "Removing a fitted linear trend from the paired seasonal anomalies gives one-month correlations of 0.417 for NDVI and 0.409 for EVI. This descriptive sensitivity check does not remove all temporal dependence or control for other environmental drivers."
+      }
+    ],
+    "seasonal": {
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "precipitation_mm": [
+        213.53744508,
+        225.67662256403077,
+        137.28250324984617,
+        24.949758985476926,
+        6.139905664287692,
+        3.8518016049415382,
+        1.3781302220196923,
+        0.7238509092863723,
+        4.20140295387648,
+        28.244238684576004,
+        69.83116128864,
+        171.479897482944
+      ],
+      "ndvi": [
+        0.48146472,
+        0.520732576923077,
+        0.5444706269230769,
+        0.5086442269230769,
+        0.4559883076923077,
+        0.4181512807692308,
+        0.3878005153846154,
+        0.35396651153846154,
+        0.32576366,
+        0.315413584,
+        0.328324156,
+        0.39089872400000003
+      ],
+      "evi": [
+        0.26920494,
+        0.2897690423076923,
+        0.2987130961538461,
+        0.2750838346153846,
+        0.24236049615384617,
+        0.22043546153846152,
+        0.20589650384615382,
+        0.19585228846153846,
+        0.18843072,
+        0.18704419600000002,
+        0.189556856,
+        0.215877508
+      ],
+      "counts": [
+        25,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    "metrics": {
+      "ndvi_same_month_r": 0.41481201733477935,
+      "ndvi_lag1_r": 0.7262107341481173,
+      "ndvi_lag1_anomaly_r": 0.39953229903430065,
+      "evi_lag1_anomaly_r": 0.37758991404255876,
+      "ndvi_lag1_detrended_anomaly_r": 0.4172471103359392,
+      "evi_lag1_detrended_anomaly_r": 0.40884667522938634,
+      "rain_peak_month": 2,
+      "ndvi_peak_month": 3
+    },
+    "example": {
+      "before": "2021-12-01",
+      "after": "2022-01-01",
+      "rain_mm": 113.49592255200001,
+      "rain_after_mm": 129.87504237599998,
+      "ndvi_before": 0.3811216,
+      "ndvi_after": 0.4803341,
+      "evi_before": 0.2124079,
+      "evi_after": 0.247564,
+      "onset_calendar_month": 12,
+      "selection_note": "Identify the calendar month with the largest climatological increase in monthly rainfall from the preceding month (including December to January). For that month, select the 2015\u20132024 year whose rainfall is closest to its median; ties within 1e-9 mm select the earlier year. Compare that rainfall-onset month with the following month. Selection uses rainfall, not the vegetation response. Rain can also fall during the following month; the observed greenness change cannot be attributed solely to the onset-month rainfall."
+    },
+    "sources": [
+      {
+        "label": "NASA Giovanni \u00b7 regional meteorological series",
+        "url": "https://giovanni.gsfc.nasa.gov/giovanni/"
+      },
+      {
+        "label": "GPM IMERG precipitation",
+        "url": "https://gpm.nasa.gov/data/imerg"
+      },
+      {
+        "label": "MODIS MOD13A3 Collection 6.1 \u00b7 NDVI and EVI",
+        "url": "https://lpdaac.usgs.gov/products/mod13a3v061/"
+      }
+    ]
+  },
+  {
+    "region": "Peru",
+    "label": "Western Amazon, Peru",
+    "start": "2000-02-01",
+    "end": "2025-08-01",
+    "observations": 307,
+    "results": [
+      {
+        "variable": "ndvi",
+        "label": "NDVI",
+        "pearson_r": -0.4309237039379109,
+        "anomaly_r": -0.2123332725346208,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": -0.4309237039379109,
+            "anomaly_r": -0.2123332725346208,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": -0.33525010915694053,
+            "anomaly_r": -0.029521113821849108,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": -0.1686781467435561,
+            "anomaly_r": 0.007650621145336124,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": 0.0035497591376421364,
+            "anomaly_r": -0.006661227401380523,
+            "observations": 304
+          }
+        ]
+      },
+      {
+        "variable": "evi",
+        "label": "EVI",
+        "pearson_r": -0.13195829733461345,
+        "anomaly_r": -0.14327814912808276,
+        "lags": [
+          {
+            "months": 0,
+            "pearson_r": -0.13195829733461345,
+            "anomaly_r": -0.14327814912808276,
+            "observations": 307
+          },
+          {
+            "months": 1,
+            "pearson_r": -0.27943316975955057,
+            "anomaly_r": -0.03841679364239264,
+            "observations": 306
+          },
+          {
+            "months": 2,
+            "pearson_r": -0.4155162373469685,
+            "anomaly_r": -0.0764033247969646,
+            "observations": 305
+          },
+          {
+            "months": 3,
+            "pearson_r": -0.33150572786667315,
+            "anomaly_r": 0.07164240140900047,
+            "observations": 304
+          }
+        ]
+      }
+    ],
+    "methodology": [
+      "Use the supplied all_concat.csv regional monthly averages over the common period, February 2000 to August 2025; the extra vegetation-only month is excluded.",
+      "Precipitation is the supplied monthly mean rate in mm/h. NDVI and EVI are dimensionless regional means. No values are rescaled or interpolated.",
+      "Calculate Pearson r on finite paired observations. Missing/fill values are excluded per pair; fewer than three pairs or a constant series gives an undefined correlation (null).",
+      "Also remove each variable's calendar-month mean over the common period to calculate seasonal anomalies, then correlate these anomalies.",
+      "For lag L = 0, 1, 2 or 3 calendar months, compare rainfall at month t\u2212L with vegetation at month t. Explicit missing calendar months are retained before shifting.",
+      "Estimate each month's rainfall depth in mm as the supplied monthly mean rate in mm/h multiplied by 24 and the actual number of days in that month, including leap years. Seasonal plots average these monthly amounts by calendar month; correlation calculations continue to use the original rate.",
+      "Use a fixed one-month rain lead as a common cross-region comparison, while displaying all leads from zero to three months; do not select the largest correlation as a confirmed response time.",
+      "For a trend-sensitivity check, fit and remove a linear time trend separately from the finite paired rainfall and vegetation seasonal anomalies, then correlate their residuals."
+    ],
+    "limitations": [
+      "Correlation describes association and does not establish that rain caused vegetation changes. Radiation, temperature, soils and land use can also contribute.",
+      "Raw correlations can largely reflect the shared annual cycle. Anomaly correlations reduce this effect but do not remove trends or temporal autocorrelation.",
+      "This is an exploratory analysis: no significance tests or causal model are fitted. Comparing several lags must not be interpreted as a validated response time.",
+      "The supplied vegetation means do not include per-pixel quality flags or valid-pixel counts, so cloud and retrieval quality effects cannot be assessed here. NDVI can saturate over dense forest.",
+      "Regional averages combine satellite products and a land model with different grid resolutions. They do not represent individual pixels or prove local changes throughout a region.",
+      "No uncertainty interval or statistical significance claim is reported: temporal autocorrelation, several lag comparisons and data quality need explicit treatment before confirmatory inference.",
+      "Satellite photographs provide dated visual context. Cloud cover, atmospheric conditions, viewing geometry and image rendering can change apparent greenness; a selected before/after image pair cannot prove a rainfall effect."
+    ],
+    "findings": [
+      {
+        "title": "The Amazon does not follow the savanna pattern",
+        "text": "The western Amazon study area stays comparatively green throughout the year. Its raw same-month rain\u2013NDVI association is negative, while the one-month anomaly association is close to zero. These observations do not support a uniform 'more rain, then more greenness' rule across all five regions."
+      },
+      {
+        "title": "What remains after removing the seasons?",
+        "text": "NDVI's same-month Pearson r is -0.431; comparing rainfall with NDVI one month later gives -0.335. After subtracting each calendar month's usual values, the one-month correlation is -0.030 over 306 paired months. The contrast shows that a large part of the raw association is seasonal, and the delayed anomaly relationship is weak."
+      },
+      {
+        "title": "Cross-check with a second vegetation index",
+        "text": "EVI's one-month anomaly correlation is -0.038. NDVI and EVI provide complementary greenness measures from the same MODIS product; agreement is useful, but it is not an independent satellite experiment or a measurement of vegetation area. In the rainfall-selected October 2016 example, NDVI changes from 0.827 to 0.832, while EVI falls from 0.561 to 0.548. This disagreement is another reason to avoid presenting every region as a greening success story."
+      },
+      {
+        "title": "Sensitivity to long-term trends",
+        "text": "Removing a fitted linear trend from the paired seasonal anomalies gives one-month correlations of -0.024 for NDVI and -0.034 for EVI. This descriptive sensitivity check does not remove all temporal dependence or control for other environmental drivers."
+      }
+    ],
+    "seasonal": {
+      "months": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "precipitation_mm": [
+        328.88376649056,
+        294.85630298953845,
+        329.6097325246154,
+        299.3332146923077,
+        244.43808472892306,
+        183.61337256,
+        143.8223083448308,
+        123.01583786926153,
+        150.989652576,
+        224.4084897648,
+        261.8015783328,
+        326.32578812832
+      ],
+      "ndvi": [
+        0.7726881039999999,
+        0.7818493,
+        0.7990328461538462,
+        0.816636776923077,
+        0.8220165615384616,
+        0.82793415,
+        0.8343163576923077,
+        0.8375740192307692,
+        0.832684596,
+        0.82622026,
+        0.811446064,
+        0.821908552
+      ],
+      "evi": [
+        0.50845786,
+        0.5071110076923078,
+        0.5149298615384615,
+        0.5046108846153846,
+        0.4967863961538462,
+        0.4971260538461539,
+        0.5053615692307692,
+        0.5215960115384616,
+        0.540274576,
+        0.554754364,
+        0.542570704,
+        0.524914264
+      ],
+      "counts": [
+        25,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        26,
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    "metrics": {
+      "ndvi_same_month_r": -0.4309237039379109,
+      "ndvi_lag1_r": -0.33525010915694053,
+      "ndvi_lag1_anomaly_r": -0.029521113821849108,
+      "evi_lag1_anomaly_r": -0.03841679364239264,
+      "ndvi_lag1_detrended_anomaly_r": -0.024092234458604023,
+      "evi_lag1_detrended_anomaly_r": -0.03415760516158457,
+      "rain_peak_month": 3,
+      "ndvi_peak_month": 8
+    },
+    "example": {
+      "before": "2016-10-01",
+      "after": "2016-11-01",
+      "rain_mm": 234.918667368,
+      "rain_after_mm": 208.86138432,
+      "ndvi_before": 0.8267628,
+      "ndvi_after": 0.8323862,
+      "evi_before": 0.5609883,
+      "evi_after": 0.5482237,
+      "onset_calendar_month": 10,
+      "selection_note": "Identify the calendar month with the largest climatological increase in monthly rainfall from the preceding month (including December to January). For that month, select the 2015\u20132024 year whose rainfall is closest to its median; ties within 1e-9 mm select the earlier year. Compare that rainfall-onset month with the following month. Selection uses rainfall, not the vegetation response. Rain can also fall during the following month; the observed greenness change cannot be attributed solely to the onset-month rainfall."
+    },
+    "sources": [
+      {
+        "label": "NASA Giovanni \u00b7 regional meteorological series",
+        "url": "https://giovanni.gsfc.nasa.gov/giovanni/"
+      },
+      {
+        "label": "GPM IMERG precipitation",
+        "url": "https://gpm.nasa.gov/data/imerg"
+      },
+      {
+        "label": "MODIS MOD13A3 Collection 6.1 \u00b7 NDVI and EVI",
+        "url": "https://lpdaac.usgs.gov/products/mod13a3v061/"
+      }
+    ]
+  }
+]

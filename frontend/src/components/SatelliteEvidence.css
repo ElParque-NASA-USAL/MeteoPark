@@ -1,0 +1,31 @@
+.satellite-evidence { color: var(--space-text, #16243b); }
+.satellite-header h2 { margin: 6px 0 16px; font-size: clamp(25px, 3vw, 35px); letter-spacing: -.035em; }
+.satellite-header > p:last-child, .satellite-mode-note { color: var(--space-muted, #52627a); font-size: 14px; line-height: 1.8; }
+.satellite-eyebrow { color: var(--space-cyan, #0f766e); font-size: 10px; text-transform: uppercase; letter-spacing: .13em; font-weight: 700; }
+.satellite-mode { display: flex; flex-wrap: wrap; gap: 9px; margin: 24px 0 14px; }
+.satellite-mode button { border: 1px solid var(--space-border, #cbd5e1); border-radius: 8px; padding: 10px 14px; background: var(--space-surface, #fff); color: var(--space-text, #16243b); font: inherit; font-size: 13px; cursor: pointer; }
+.satellite-mode button[aria-pressed=true] { border-color: var(--space-accent, #4338ca); background: #eeedff; color: var(--space-accent, #4338ca); font-weight: 650; }
+.satellite-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 24px 0; }
+.satellite-pair figure { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--space-border, #cbd5e1); border-radius: 12px; background: var(--space-surface, #fff); }
+.satellite-image-heading { padding: 16px; }
+.satellite-image-heading span { display: block; font-size: 11px; color: var(--space-muted, #52627a); margin-bottom: 5px; }
+.satellite-image-heading strong { font-size: 18px; }
+.satellite-image-link { display: block; }
+.satellite-image-link img { display: block; width: 100%; height: auto; }
+.satellite-pair figcaption { padding: 14px 16px 16px; font-size: 11px; color: var(--space-muted, #52627a); line-height: 1.7; }
+.satellite-pair figcaption p { margin: 0 0 8px; }
+.satellite-pair figcaption strong { color: var(--space-text, #16243b); }
+.satellite-pair figcaption > div { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.satellite-evidence a { color: var(--space-cyan, #0f766e); text-underline-offset: 4px; }
+.satellite-legend { margin: 0 0 24px; padding: 16px; background: white; border: 1px solid var(--space-border, #cbd5e1); border-radius: 10px; }
+.satellite-legend img { display: block; width: min(100%, 520px); height: auto; }
+.satellite-legend figcaption { font-size: 11px; margin-top: 9px; color: var(--space-muted, #52627a); }
+.satellite-reading { border-left: 3px solid var(--space-cyan, #0f766e); padding: 4px 0 4px 20px; margin: 24px 0; }
+.satellite-reading h3 { font-size: 16px; margin: 0 0 10px; }
+.satellite-reading p, .satellite-method p { font-size: 13px; line-height: 1.8; margin: 10px 0; }
+.satellite-note { color: var(--space-muted, #52627a); font-size: 12px; line-height: 1.8; }
+.satellite-method { padding: 16px; border: 1px solid var(--space-border, #cbd5e1); border-radius: 8px; color: var(--space-muted, #52627a); }
+.satellite-method summary { color: var(--space-text, #16243b); font-size: 13px; font-weight: 600; cursor: pointer; }
+.satellite-image-error { aspect-ratio: 1; padding: 24px; display: grid; align-content: center; background: var(--space-raised, #eef3fa); color: var(--space-muted, #52627a); font-size: 13px; line-height: 1.7; }
+.satellite-evidence :focus-visible { outline: 2px solid var(--space-accent, #4338ca); outline-offset: 4px; }
+@media (max-width: 620px) { .satellite-pair { grid-template-columns: minmax(0, 1fr); } }

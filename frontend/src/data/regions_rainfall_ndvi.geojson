@@ -1,0 +1,186 @@
+{
+  "type": "FeatureCollection",
+  "name": "Rainfall_NDVI_study_regions",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Niger",
+        "name": "Sahel, Niger",
+        "climate": "Seasonal semi-arid",
+        "role": "Study region"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4,
+              12
+            ],
+            [
+              6,
+              12
+            ],
+            [
+              6,
+              14
+            ],
+            [
+              4,
+              14
+            ],
+            [
+              4,
+              12
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Brazil",
+        "name": "Cerrado, Brazil",
+        "climate": "Seasonal tropical savanna",
+        "role": "Study region"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -48,
+              -15
+            ],
+            [
+              -46,
+              -15
+            ],
+            [
+              -46,
+              -13
+            ],
+            [
+              -48,
+              -13
+            ],
+            [
+              -48,
+              -15
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Tanzania",
+        "name": "Serengeti, Tanzania",
+        "climate": "Seasonal tropical savanna",
+        "role": "Study region"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34.5,
+              -3
+            ],
+            [
+              35.5,
+              -3
+            ],
+            [
+              35.5,
+              -2
+            ],
+            [
+              34.5,
+              -2
+            ],
+            [
+              34.5,
+              -3
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Australia",
+        "name": "Northern Australia",
+        "climate": "Monsoon savanna",
+        "role": "Study region"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              132,
+              -17
+            ],
+            [
+              134,
+              -17
+            ],
+            [
+              134,
+              -15
+            ],
+            [
+              132,
+              -15
+            ],
+            [
+              132,
+              -17
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Peru",
+        "name": "Western Amazon, Peru",
+        "climate": "Humid tropical forest",
+        "role": "Comparison region"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72,
+              -6
+            ],
+            [
+              -69,
+              -6
+            ],
+            [
+              -69,
+              -3
+            ],
+            [
+              -72,
+              -3
+            ],
+            [
+              -72,
+              -6
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
