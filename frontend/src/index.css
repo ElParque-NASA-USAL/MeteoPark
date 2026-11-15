@@ -16,77 +16,6 @@ a {
   color: inherit;
 }
 
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 48px;
-  border-bottom: 1px solid #344255;
-}
-
-.site-brand {
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.site-header nav {
-  display: flex;
-  gap: 24px;
-}
-
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 64px 0;
-}
-
-.home-hero {
-  max-width: 850px;
-  padding: 64px 0 96px;
-}
-
-.eyebrow {
-  color: #79d9d0;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.home-hero h1 {
-  margin: 24px 0;
-  font-size: 64px;
-  line-height: 1.1;
-}
-
-.home-intro,
-.home-about p {
-  color: #b9c7d5;
-  font-size: 20px;
-  line-height: 1.6;
-}
-
-.primary-link {
-  display: inline-block;
-  margin-top: 32px;
-  padding: 14px 22px;
-  border-radius: 8px;
-  background: #79d9d0;
-  color: #101b2a;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.home-about {
-  max-width: 850px;
-  padding-top: 40px;
-  border-top: 1px solid #344255;
-}
-
-.home-about h2 {
-  font-size: 28px;
-}
-
 .explore-page {
   position: relative;
   width: 100%;
@@ -168,7 +97,7 @@ main {
   right: 10vw;
   display: flex;
   flex-direction: column;
-  width: min(46vw, 720px);
+  width: min(37.5vw, 720px);
   height: min(82vh, 760px);
   padding: 28px;
   border: 1px solid rgba(185, 199, 213, 0.2);
@@ -205,6 +134,18 @@ main {
   color: #b9c7d5;
   font-size: 28px;
   cursor: pointer;
+}
+
+.explore-home-link {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  z-index: 4;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  text-decoration: none;
 }
 
 .result-tabs {
@@ -290,4 +231,10 @@ main {
   color: #9eafbf;
   font-size: 12px;
   text-align: right;
+}
+
+@media (max-width: 1500px) {
+  .explore-page.has-selection .results-panel {
+    right: 4vw;
+  }
 }

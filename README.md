@@ -1,6 +1,6 @@
-# NASA Space Apps Challenge
+# MeteoPark
 
-This repository contains the NASA Space Apps Challenge 2026 project developed by El Parque. It includes a FastAPI backend and a React + TypeScript frontend; scientific datasets and trend calculations will be integrated later.
+MeteoPark is an Earth trend exploration project developed by El Parque for the NASA Space Apps Challenge 2026. The repository contains a FastAPI backend, a React + TypeScript frontend, and Earth science data and analysis code under development.
 
 ## Requirements
 
