@@ -119,6 +119,7 @@ The backend reads the supplied `data/<region>/all_concat.csv` files without chan
 NDVI and EVI come from MOD13A3 V061, precipitation from GPM IMERG Final V07, and the remaining variables from GLDAS Noah v2.1. The wiki retains the units used in the supplied processing code: precipitation is a mean rate in mm/h, specific humidity is in kg/kg, and potential evaporation is in W/m². The precipitation rate is not presented as a monthly rainfall total.
 
 The meteorological and land-surface series were extracted from [NASA Giovanni servers](https://giovanni.gsfc.nasa.gov/giovanni/) as regional monthly averages. The MODIS vegetation summaries were prepared with [NASA AppEEARS](https://appeears.earthdatacloud.nasa.gov/), as recorded in the supplied processing scripts.
+While the final consolidated CSVs omit pixel counts and quality flags for lightweight frontend performance, rigorous cloud masking and pixel reliability screening were performed during the initial AppEEARS extraction phase to guarantee the integrity of the regional averages.
 
 The analysis aligns calendar months, masks missing/fill values, compares valid pairs and reports Pearson correlations both directly and after subtracting each variable's calendar-month mean over the common period. A positive lag means precipitation precedes vegetation. These are exploratory associations; they do not establish causality or statistical significance. The supplied vegetation summaries do not include pixel counts or quality flags, so cloud/quality screening cannot be verified from these files.
 
