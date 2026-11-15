@@ -1,6 +1,10 @@
 # MeteoPark
 
-MeteoPark is an Earth trend exploration project developed by El Parque for the NASA Space Apps Challenge 2026. The repository contains a FastAPI backend, a React + TypeScript frontend, and Earth science data and analysis code under development.
+MeteoPark is an Earth trend exploration project developed by El Parque for the NASA Space Apps Challenge 2026. 
+
+🌍 **Live Demo:** [https://meteo-park.vercel.app/](https://meteo-park.vercel.app/)
+
+The repository contains a FastAPI backend, a React + TypeScript frontend, and Earth science data and analysis code under development.
 
 ## Project Structure
 
