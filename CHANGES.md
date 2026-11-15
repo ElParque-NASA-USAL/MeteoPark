@@ -1,5 +1,7 @@
 # Changes made
 
+- Added root-level `launch.bat` for Windows: installs dependencies using existing uv/npm, checks ports, and opens the two servers in separate terminals.
+
 - Added an explicit study question and explanation of the five observational comparisons, clearer satellite-source attribution, and a time-series reading guide. Removed the yearly-evolution section.
 
 - Explore now contains each region's study, findings, satellite comparisons, and all 12 variable definitions. The separate wiki and analysis pages remain for detailed reading.

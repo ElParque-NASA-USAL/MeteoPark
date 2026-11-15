@@ -22,6 +22,16 @@ You can also run the executable script as `./launch.sh`. It works when called fr
 
 The separate commands below remain available for running each server manually, including from Windows CMD.
 
+## Quick start (Windows)
+
+With uv and Node.js/npm installed, double-click `launch.bat` in the project root, or run it in CMD:
+
+```cmd
+launch.bat
+```
+
+It installs the locked dependencies and opens separate backend and frontend terminal windows. Keep both windows open. Visit http://localhost:5173 once Vite is ready. To stop the app, press **Ctrl+C in each server window** or close both windows. Closing the launcher window alone does not stop the servers. If you just installed uv or Node.js, reopen your terminal so PATH is refreshed. Ports 8000 and 5173 must be free.
+
 ## Backend
 
 Open **CMD** in the repository root and run:
