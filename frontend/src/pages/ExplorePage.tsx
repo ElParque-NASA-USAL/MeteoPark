@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Globe, { type GlobeMethods } from 'react-globe.gl'
+import { Link } from 'react-router'
 import regionsRaw from '../data/regiones_lluvia_ndvi.geojson?raw'
 
 type Region = {
@@ -128,6 +129,12 @@ function ExplorePage() {
   return (
     <main className={`explore-page ${selectedRegion ? 'has-selection' : ''}`}>
       {!selectedRegion && (
+        <Link className="panel-close explore-home-link" to="/" aria-label="Back to home">
+          ×
+        </Link>
+      )}
+
+      {!selectedRegion && (
         <nav className="region-nav" aria-label="Available regions">
           {regions.map((region) => (
             <button
@@ -175,7 +182,7 @@ function ExplorePage() {
             controls.enableRotate = true
             controls.enableZoom = true
             controls.enablePan = false
-            controls.minDistance = radius * 2.7
+            controls.minDistance = radius * 2
             controls.maxDistance = radius * 5
 
             globe.pointOfView({ lat: 13, lng: 5, altitude: 2.15 })
